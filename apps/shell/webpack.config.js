@@ -11,6 +11,8 @@ module.exports = require('../../tools/webpack.base')({
   name: 'shell',
   port: 4000,
   dirname: __dirname,
+  // An absolute path keeps deep links (reloading /mfe-starter/products/aurora-lamp) loading the right scripts.
+  publicPath: basename ? `${basename}/` : 'auto',
   define: { 'process.env.BASENAME': JSON.stringify(basename) },
   remotes: {
     products: `products@${productsUrl}/remoteEntry.js`,

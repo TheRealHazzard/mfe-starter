@@ -2,7 +2,7 @@
 
 A working micro-frontend starter: one **shell** and two independently built **remotes** (products and cart), composed in the browser at runtime with Webpack 5 Module Federation. React 19, TypeScript, npm workspaces.
 
-**Live demo: https://therealhazzard.github.io/mfe-starter/** (the shell, products and cart are three separate sites under that address: [/products/](https://therealhazzard.github.io/mfe-starter/products/) and [/cart/](https://therealhazzard.github.io/mfe-starter/cart/) also run standalone).
+**Live demo: https://therealhazzard.github.io/mfe-starter/** (the shell, products and cart are three separate sites under that address: [/remotes/products/](https://therealhazzard.github.io/mfe-starter/remotes/products/) and [/remotes/cart/](https://therealhazzard.github.io/mfe-starter/remotes/cart/) also run standalone).
 
 ![Products page rendered by the products remote, inside the shell](docs/products.png)
 

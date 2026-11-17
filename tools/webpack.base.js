@@ -16,14 +16,14 @@ const shared = {
 };
 
 module.exports =
-  ({ name, port, dirname, exposes = {}, remotes = {}, define = {} }) =>
+  ({ name, port, dirname, exposes = {}, remotes = {}, define = {}, publicPath = 'auto' }) =>
   (_env, argv) => {
     const isProd = argv.mode === 'production';
     return {
       entry: './src/index.ts',
       output: {
         path: path.join(dirname, 'dist'),
-        publicPath: 'auto',
+        publicPath,
         clean: true,
         filename: isProd ? '[name].[contenthash:8].js' : '[name].js',
       },

@@ -33,15 +33,15 @@ jobs:
       - run: npm run build -w @mfe/products -w @mfe/cart
       - run: npm run build -w @mfe/shell
         env:
-          PRODUCTS_URL: ${{ env.SITE }}/products
-          CART_URL: ${{ env.SITE }}/cart
+          PRODUCTS_URL: ${{ env.SITE }}/remotes/products
+          CART_URL: ${{ env.SITE }}/remotes/cart
           BASENAME: /mfe-starter
       - name: Assemble the site
         run: |
-          mkdir -p site/products site/cart
+          mkdir -p site/remotes/products site/remotes/cart
           cp -r apps/shell/dist/. site/
-          cp -r apps/products/dist/. site/products/
-          cp -r apps/cart/dist/. site/cart/
+          cp -r apps/products/dist/. site/remotes/products/
+          cp -r apps/cart/dist/. site/remotes/cart/
           cp site/index.html site/404.html   # lets deep links like /products/aurora-lamp work
       - uses: actions/upload-pages-artifact@v3
         with:
