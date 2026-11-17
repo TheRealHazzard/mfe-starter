@@ -1,0 +1,20 @@
+.top { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(13, 17, 23, 0.9); backdrop-filter: blur(8px); }
+.top nav { display: flex; gap: 24px; align-items: center; }
+.top nav a { color: var(--muted); }
+.top nav a.active, .top nav a:hover { color: var(--text); }
+.brand { font: 700 18px/1 Consolas, monospace; color: var(--text); }
+.brand span { color: var(--cyan); }
+.page { max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+.muted { color: var(--muted); }
+.home h1 { font-size: 34px; margin: 0 0 10px; }
+.lead { font-size: 17px; color: var(--muted); max-width: 640px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 24px 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; color: var(--text); }
+.card:hover { border-color: var(--blue); }
+.card h2 { margin: 0 0 6px; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); }
+.remote-error { border: 1px solid var(--red); background: rgba(248, 81, 73, 0.08); border-radius: 12px; padding: 16px; }
+.remote-error p { color: var(--muted); }
+.toasts { position: fixed; right: 20px; bottom: 20px; display: grid; gap: 8px; z-index: 10; }
+.toast { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 8px; padding: 10px 14px; }
+.toast.success { border-left-color: var(--green); }

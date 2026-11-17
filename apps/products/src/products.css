@@ -1,0 +1,10 @@
+.pr-title { margin: 0 0 16px; font-size: 26px; }
+.pr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.pr-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.pr-card h2 { font-size: 17px; margin: 10px 0 4px; color: var(--text); }
+.pr-card p { color: var(--muted); margin: 0 0 12px; min-height: 44px; }
+.pr-swatch { height: 120px; border-radius: 8px; }
+.pr-row { display: flex; justify-content: space-between; align-items: center; }
+.pr-detail { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.pr-detail .pr-swatch { height: 280px; }
+@media (max-width: 640px) { .pr-detail { grid-template-columns: 1fr; } }

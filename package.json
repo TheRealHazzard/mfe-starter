@@ -1,0 +1,28 @@
+{
+  "name": "mfe-starter",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Micro-frontend starter: a shell and independently deployable remotes composed at runtime with Webpack Module Federation",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -n shell,products,cart -c blue,green,magenta \"npm run dev -w @mfe/shell\" \"npm run dev -w @mfe/products\" \"npm run dev -w @mfe/cart\"",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.16.22",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "concurrently": "^10.0.7",
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "style-loader": "^4.0.0",
+    "swc-loader": "^0.2.7",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1",
+    "webpack-dev-server": "^6.1.0"
+  }
+}
