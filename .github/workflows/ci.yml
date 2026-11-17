@@ -1,8 +1,22 @@
-name: CI
+name: CI and deploy
 on:
   push:
     branches: [master]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  SITE: https://therealhazzard.github.io/mfe-starter
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -15,4 +29,31 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
-      - run: npm run build
+      # Each app is built on its own, exactly as three teams would deploy them.
+      - run: npm run build -w @mfe/products -w @mfe/cart
+      - run: npm run build -w @mfe/shell
+        env:
+          PRODUCTS_URL: ${{ env.SITE }}/products
+          CART_URL: ${{ env.SITE }}/cart
+          BASENAME: /mfe-starter
+      - name: Assemble the site
+        run: |
+          mkdir -p site/products site/cart
+          cp -r apps/shell/dist/. site/
+          cp -r apps/products/dist/. site/products/
+          cp -r apps/cart/dist/. site/cart/
+          cp site/index.html site/404.html   # lets deep links like /products/aurora-lamp work
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    needs: verify
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -5,7 +5,7 @@ import App from './App';
 import './shell.css';
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.BASENAME || undefined}>
     <App />
   </BrowserRouter>,
 );

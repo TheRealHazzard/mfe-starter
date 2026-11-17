@@ -2,7 +2,8 @@
 // wiring lives in exactly one place.
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const webpack = require('webpack');
+const { ModuleFederationPlugin } = webpack.container;
 
 // Singletons: there must be exactly one copy of these at runtime. Two copies of
 // React break hooks; two copies of @mfe/shared would split the cart state.
@@ -15,7 +16,7 @@ const shared = {
 };
 
 module.exports =
-  ({ name, port, dirname, exposes = {}, remotes = {} }) =>
+  ({ name, port, dirname, exposes = {}, remotes = {}, define = {} }) =>
   (_env, argv) => {
     const isProd = argv.mode === 'production';
     return {
@@ -47,6 +48,7 @@ module.exports =
         ],
       },
       plugins: [
+        new webpack.DefinePlugin(define),
         new ModuleFederationPlugin({
           name,
           filename: 'remoteEntry.js',

@@ -2,6 +2,8 @@
 
 A working micro-frontend starter: one **shell** and two independently built **remotes** (products and cart), composed in the browser at runtime with Webpack 5 Module Federation. React 19, TypeScript, npm workspaces.
 
+**Live demo: https://therealhazzard.github.io/mfe-starter/** (the shell, products and cart are three separate sites under that address: [/products/](https://therealhazzard.github.io/mfe-starter/products/) and [/cart/](https://therealhazzard.github.io/mfe-starter/cart/) also run standalone).
+
 ![Products page rendered by the products remote, inside the shell](docs/products.png)
 
 ## Why micro-frontends
@@ -62,6 +64,8 @@ Each app builds to its own `dist/` and can be deployed to any static host indepe
 ```bash
 PRODUCTS_URL=https://products.example.com CART_URL=https://cart.example.com npm run build -w @mfe/shell
 ```
+
+If the shell is served under a sub-path, also set `BASENAME` (for example `BASENAME=/mfe-starter`). The [GitHub Actions workflow](.github/workflows/ci.yml) does exactly this to publish the live demo: it builds the two remotes, builds the shell pointing at them, and serves all three from one GitHub Pages site.
 
 Remote hosts must send `Access-Control-Allow-Origin` for the shell's origin.
 
