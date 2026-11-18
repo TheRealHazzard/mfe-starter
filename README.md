@@ -4,6 +4,8 @@ A working micro-frontend starter: one **shell** and two independently built **re
 
 **Live demo: https://therealhazzard.github.io/mfe-starter/** (the shell, products and cart are three separate sites under that address: [/remotes/products/](https://therealhazzard.github.io/mfe-starter/remotes/products/) and [/remotes/cart/](https://therealhazzard.github.io/mfe-starter/remotes/cart/) also run standalone).
 
+Lighthouse (mobile, live site, Nov 2026): performance 94, accessibility 100, best practices 100, SEO 100.
+
 ![Products page rendered by the products remote, inside the shell](docs/products.png)
 
 ## Why micro-frontends
