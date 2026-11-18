@@ -6,9 +6,12 @@ import './cart.css';
 export default function CartBadge() {
   const { count } = useCart();
   return (
-    <Link to="/cart" className="ct-badge" aria-label={`Cart, ${count} items`}>
+    <Link to="/cart" className="ct-badge">
       Cart
-      <span className={count ? 'ct-count on' : 'ct-count'}>{count}</span>
+      <span className={count ? 'ct-count on' : 'ct-count'}>
+        {count}
+        <span className="ct-sr"> items</span>
+      </span>
     </Link>
   );
 }
